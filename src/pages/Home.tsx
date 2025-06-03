@@ -2,8 +2,7 @@ import { useState } from 'react';
 import Map from "../components/Map";
 import { camps } from "../data/camps";
 import { useNavigate } from 'react-router-dom';
-import { Moon, Sun, Settings } from "lucide-react";
-import { useTheme } from '../contexts/ThemeContext';
+import SettingsToggle from '../components/SettingsToggle';
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,7 +10,6 @@ const Home = () => {
     camp.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const navigate = useNavigate();
-  const { theme, toggleTheme } = useTheme()
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
@@ -22,17 +20,7 @@ const Home = () => {
             🏕️ GeoCamp Finder
           </h1>
           <div className='flex gap-2'>
-            <button
-              onClick={toggleTheme}
-              className="flex items-center p-2 rounded-full bg-slate-100 dark:bg-gray-700 text-orange-500 dark:text-orange-300 hover:bg-slate-200 dark:hover:bg-gray-600 transition"
-            >
-              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-            </button>
-            <button
-              className="flex items-center p-2 rounded-full bg-slate-100 dark:bg-gray-700 text-orange-500 dark:text-orange-300 hover:bg-slate-200 dark:hover:bg-gray-600 transition"
-            >
-              <Settings size={20} />
-            </button>
+            <SettingsToggle />
           </div>
         </div>
       </header>

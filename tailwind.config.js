@@ -8,14 +8,18 @@ export default {
   theme: {
     extend: {
       keyframes: {
-        shake: {
-          "0%, 100%": { transform: "translateX(0)" },
-          "20%, 60%": { transform: "translateX(-8px)" },
-          "40%, 80%": { transform: "translateX(8px)" },
+        'fade-in-up': {
+          '0%': { opacity: 0, transform: 'translateY(0.5rem) scale(0.95)' },
+          '100%': { opacity: 1, transform: 'translateY(0) scale(1)' },
+        },
+        'fade-out-down': {
+          '0%': { opacity: 1, transform: 'translateY(0) scale(1)' },
+          '100%': { opacity: 0, transform: 'translateY(0.5rem) scale(0.95)' },
         },
       },
       animation: {
-        shake: "shake 0.4s ease-in-out",
+        'fade-in-up': 'fade-in-up 200ms ease-out forwards',
+        'fade-out-down': 'fade-out-down 200ms ease-in forwards',
       },
     },
   },
