@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import CampDetailsPage from "./pages/CampDetailsPage";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { FavoritesProvider } from "./contexts/FavoritesContext";
 
 // Optional: simple full-page spinner
 const FullPageSpinner = () => (
@@ -14,9 +15,7 @@ const FullPageSpinner = () => (
 
 const AppRoutes = () => {
   const { user, loading } = useAuth();
-
   if (loading) return <FullPageSpinner />;
-
   return (
     <Routes>
       <Route path="*" element={<Navigate to={user ? "/home" : "/login"} />} />
@@ -31,7 +30,9 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <AppRoutes />
+        <FavoritesProvider>
+          <AppRoutes />
+        </FavoritesProvider>
       </AuthProvider>
     </ThemeProvider>
   );
