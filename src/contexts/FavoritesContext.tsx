@@ -1,32 +1,36 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 type FavoritesContextType = {
-  favorites: string[]; // store camp IDs
-  toggleFavorite: (campId: string) => void;
-  isFavorite: (campId: string) => boolean;
+  favorites: number[]; // store camp IDs
+  toggleFavorite: (campId: number) => void;
+  isFavorite: (campId: number) => boolean;
 };
 
 const FavoritesContext = createContext<FavoritesContextType>({
   favorites: [],
-  toggleFavorite: () => {},
+  toggleFavorite: () => { },
   isFavorite: () => false,
 });
 
 export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
-  const [favorites, setFavorites] = useState<string[]>([]);
-
-  useEffect(() => {
+  const [favorites, setFavorites] = useState<number[]>(() => {
     const stored = localStorage.getItem("Favorites");
-    if (stored) {
-      setFavorites(JSON.parse(stored));
-    }
-  }, []);
+    if (stored) return JSON.parse(stored)
+    else return []
+  });  
+
+  // useEffect(() => {
+  //   const stored = localStorage.getItem("Favorites");
+  //   if (stored) {
+  //     setFavorites(JSON.parse(stored));
+  //   }
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem("Favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  const toggleFavorite = (campId: string) => {
+  const toggleFavorite = (campId: number) => {
     setFavorites((prev) =>
       prev.includes(campId)
         ? prev.filter((id) => id !== campId)
@@ -34,7 +38,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const isFavorite = (campId: string) => favorites.includes(campId);
+  const isFavorite = (campId: number) => favorites.includes(campId);
 
   return (
     <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>

@@ -9,7 +9,7 @@ export default {
     extend: {
       keyframes: {
         'fade-in-up': {
-          '0%': { opacity: 0, transform: 'translateY(0.5rem) scale(0.95)' },
+          '0%': { opacity: 0, transform: 'translateY(-0.5rem) scale(0.95)' },
           '100%': { opacity: 1, transform: 'translateY(0) scale(1)' },
         },
         'fade-out-down': {

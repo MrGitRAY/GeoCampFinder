@@ -3,6 +3,8 @@ import Map from "../components/Map";
 import { camps } from "../data/camps";
 import { useNavigate } from 'react-router-dom';
 import SettingsToggle from '../components/SettingsToggle';
+import { Heart } from "lucide-react";
+import { useFavorites } from "../contexts/FavoritesContext";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -10,14 +12,15 @@ const Home = () => {
     camp.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const navigate = useNavigate();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
       {/* Navbar */}
-      <header className="dark:bg-gray-800 shadow p-4 sticky top-0 z-10">
+      <header className="backdrop-blur-sm bg-white/90 dark:bg-slate-800/90 shadow p-4 sticky top-0 z-10">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold text-orange-600 dark:text-orange-400">
-            🏕️ GeoCamp Finder
+            🏕️ Geo<span className='text-lime-600'>Camp</span>Finder
           </h1>
           <div className='flex gap-2'>
             <SettingsToggle />
@@ -45,9 +48,22 @@ const Home = () => {
               <div
                 key={camp.id}
                 onClick={() => navigate(`/home/camp-details/${camp.id}`)}
-                className="group cursor-pointer bg-slate-300 dark:bg-gray-700 hover:bg-orange-600 dark:hover:bg-orange-500 p-4 mb-2 rounded-2xl transition-colors"
+                className="group relative cursor-pointer bg-slate-300 dark:bg-gray-700 hover:bg-orange-600 dark:hover:bg-orange-500 p-4 mb-2 rounded-2xl transition-colors"
               >
-                <h2 className="font-semibold text-black dark:text-white group-hover:text-white">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorite(camp.id);
+                  }}
+                  className="absolute top-2 right-2 p-2 rounded-full bg-white dark:bg-slate-800 hover:scale-110 transition-transform"
+                >
+                  {isFavorite(camp.id) ? (
+                    <Heart className="text-red-500 fill-red-500" size={20} />
+                  ) : (
+                    <Heart className="text-gray-400" size={20} />
+                  )}
+                </button>
+                <h2 className="mb-2 font-semibold text-black dark:text-white group-hover:text-white">
                   {camp.name}
                 </h2>
                 <p className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-100">
@@ -64,7 +80,7 @@ const Home = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-lime-800 p-4 text-center text-sm text-gray-50 dark:bg-orange-600">
+      <footer className="bg-lime-800 p-20 text-center text-sm text-gray-50 dark:bg-orange-600">
         © {new Date().getFullYear()} GeoCamp Finder — All rights reserved.
       </footer>
     </div>
