@@ -8,6 +8,17 @@ export interface Camp {
   features?: string[];
 }
 
+export const allFeatures: string[] = [
+  'Water',
+  "Restroom",
+  "Fire Pit",
+  "Shade",
+  "Trash Bin",
+  "Shower",
+  "Electricity",
+  "Parking"
+]
+
 export const camps: Camp[] = [
   {
     id: 1,
