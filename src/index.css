@@ -6,6 +6,14 @@
     box-sizing: border-box;
 }
 
+@layer base {
+    @media (max-width: 800px) {
+        html {
+            font-size: 90%;
+        }
+    }
+}
+
 @layer utilities {
     .custom-scrollbar {
         scrollbar-width: thin;
