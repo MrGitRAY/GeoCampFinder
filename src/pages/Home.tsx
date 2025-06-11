@@ -141,9 +141,18 @@ const Home = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-lime-800 p-20 text-center text-sm text-gray-50 dark:bg-orange-600">
-        © {new Date().getFullYear()} GeoCamp Finder — All rights reserved.
+      <footer className="bg-slate-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 text-sm px-4 py-6 mt-auto">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>© {new Date().getFullYear()} GeoCamp Finder — All rights reserved.</p>
+
+          <div className="flex gap-4">
+            <a href="/profile" className="hover:underline hover:text-orange-600 dark:hover:text-orange-400 transition">Profile</a>
+            <a href="#" className="hover:underline hover:text-orange-600 dark:hover:text-orange-400 transition">About</a>
+            <a href="#" className="hover:underline hover:text-orange-600 dark:hover:text-orange-400 transition">Contact</a>
+          </div>
+        </div>
       </footer>
+
     </div>
   );
 };
