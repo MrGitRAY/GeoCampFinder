@@ -12,7 +12,10 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [onlyFavorites, setOnlyFavorites] = useState<boolean>(false);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-  const filteredCamps = camps.filter((camp) => {
+  const userCamps = JSON.parse(localStorage.getItem("UserCamps") || "[]");
+  const allCamps = [...camps, ...userCamps];
+
+  const filteredCamps = allCamps.filter((camp) => {
     //match search query?
     const matchesSearch = camp.name.toLowerCase().includes(searchQuery.toLowerCase());
     //match favorites?
@@ -29,7 +32,7 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
       {/* Navbar */}
-      <header className="backdrop-blur-sm bg-white/90 dark:bg-slate-800/90 shadow py-1 px-4 sticky top-0 z-10">
+      <header className="backdrop-blur-sm bg-white/90 dark:bg-slate-800/90 shadow py-2 px-4 sticky top-0 z-10">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold text-orange-600 dark:text-orange-400">
             🏕️ <a href="/">Geo<span className='text-lime-600'>Camp</span>Finder</a>
@@ -47,7 +50,7 @@ const Home = () => {
       </header>
 
       {/* Main content */}
-      <main className="flex flex-col md:flex-row  md:h-[calc(100vh-50px)]">
+      <main className="flex flex-col md:flex-row  md:h-[calc(100vh-55px)]">
         {/* Camp list - left */}
         <div className="w-full h-[60vh] md:w-1/3 md:h-full flex flex-col order-1 md:order-0 sm:mt-4 md:mt-auto">
           <div className="flex flex-col sm:flex-row md:flex-col">

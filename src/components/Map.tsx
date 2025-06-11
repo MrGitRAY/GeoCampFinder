@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { camps } from "../data/camps";
 import type { Camp } from "../data/camps";
 
+const userCamps = JSON.parse(localStorage.getItem("UserCamps") || "[]");
+const allCamps = [...camps, ...userCamps];
+
 const containerStyle = {
   width: "100%",
   height: "100%",
@@ -21,7 +24,7 @@ const Map = () => {
   return (
     <LoadScript googleMapsApiKey="AIzaSyDh31mnStTdhubMi0HZ4QVUIHlQQHrNZGg">
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={6}>
-        {camps.map((camp) => (
+        {allCamps.map((camp) => (
           <Marker
             key={camp.id}
             position={{ lat: camp.lat, lng: camp.lng }}
