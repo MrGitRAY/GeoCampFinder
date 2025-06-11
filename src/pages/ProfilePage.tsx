@@ -17,9 +17,19 @@ const ProfilePage = () => {
     const [campImage, setCampImage] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
 
-    const userCamps = JSON.parse(localStorage.getItem("UserCamps") || "[]");
+    const [userCamps, setUserCamps] = useState(() => {
+        const stored = localStorage.getItem("UserCamps");
+        return stored ? JSON.parse(stored) : [];
+    });
     const allCamps = [...camps, ...userCamps];
     const favoriteCamps = allCamps.filter((camp) => favorites.includes(camp.id));
+
+    const handleDeleteCamp = (campId: string) => { // have to adjust type later
+        const updated = userCamps.filter((camp: any) => camp.id !== campId);
+        setUserCamps(updated);
+        localStorage.setItem("UserCamps", JSON.stringify(updated));
+    };
+
 
     return (
         <div className="min-h-screen bg-slate-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 p-6">
@@ -72,7 +82,7 @@ const ProfilePage = () => {
 
                 {/* Add camp */}
                 <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-4 mb-4">
-                    <h2 className="text-lg font-semibold mb-4">➕ Add New Camp</h2>
+                    <h2 className="inline-block text-xl font-semibold bg-slate-100 dark:bg-gray-700 rounded-lg py-1 px-2 mb-4">➕ Add New Camp</h2>
 
                     {successMsg && (
                         <p className="text-green-500 text-sm mb-3">{successMsg}</p>
@@ -124,7 +134,7 @@ const ProfilePage = () => {
                             required
                         />
 
-                        {/* انتخاب ویژگی‌ها */}
+                        {/* Add features to camp*/}
                         <div className="flex gap-2 flex-wrap">
                             {allFeatures.map((feature) => (
                                 <button
@@ -157,15 +167,40 @@ const ProfilePage = () => {
 
                         <button
                             type="submit"
-                            className="border border-orange-600 dark:border-lime-400 hover:bg-orange-600 dark:hover:bg-lime-400 dark:hover:text-black dark:text-white hover:text-white font-semibold px-2 py-1 rounded"
+                            className="border border-orange-600 dark:border-lime-400 hover:bg-orange-600 dark:hover:bg-lime-400 dark:hover:text-black dark:text-white hover:text-white text-sm font-semibold px-2 py-1 rounded"
                         >
                             Add Camp
                         </button>
                     </form>
                 </div>
 
+                {/* Created Camps */}
+                <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-4 mb-6">
+                    <h2 className="inline-block text-xl font-semibold bg-slate-100 dark:bg-gray-700 rounded-lg py-1 px-2 mb-4">📝 My Created Camps</h2>
 
-                {/* Navigate back */}
+                    {userCamps.length > 0 ? (
+                        <ul className="space-y-2">
+                            {userCamps.map((camp: any) => ( // have to adjust the type later
+                                <li
+                                    key={camp.id}
+                                    className="flex justify-between items-center bg-slate-200 dark:bg-slate-700 px-4 py-2 rounded-lg"
+                                >
+                                    <span>{camp.name}</span>
+                                    <button
+                                        onClick={() => handleDeleteCamp(camp.id)}
+                                        className="text-sm text-red-500 hover:underline"
+                                    >
+                                        Delete
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="text-sm text-gray-500">You haven’t created any camps yet.</p>
+                    )}
+                </div>
+
+                {/* Navigate back to Home*/}
                 <button
                     onClick={() => navigate("/")}
                     className="mr-2 bg-orange-600 hover:bg-lime-700 text-white px-4 py-2 rounded"
