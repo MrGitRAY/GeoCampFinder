@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import CampDetailsPage from "./pages/CampDetailsPage";
+import ProfilePage from "./pages/ProfilePage";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { FavoritesProvider } from "./contexts/FavoritesContext";
@@ -22,6 +23,7 @@ const AppRoutes = () => {
       <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
       <Route path="/home" element={user ? <Home /> : <Navigate to="/login" />} />
       <Route path="/home/camp-details/:id" element={<CampDetailsPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
     </Routes>
   );
 };

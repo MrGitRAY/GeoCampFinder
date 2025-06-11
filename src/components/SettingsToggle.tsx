@@ -30,7 +30,7 @@ const SettingsToggle = () => {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center p-2 rounded-full bg-slate-100 dark:bg-gray-700 text-orange-500 hover:bg-slate-200 dark:hover:bg-gray-600 transition"
+        className="flex items-center p-2 rounded-full bg-slate-100 dark:bg-gray-700 text-orange-500 dark:text-lime-500 hover:bg-slate-200 dark:hover:bg-gray-600 transition"
       >
         <Settings size={25} />
       </button>
