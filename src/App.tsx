@@ -6,6 +6,7 @@ import ProfilePage from "./pages/ProfilePage";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { FavoritesProvider } from "./contexts/FavoritesContext";
+import Signup from "./pages/Signup";
 
 // Optional: simple full-page spinner
 const FullPageSpinner = () => (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="*" element={<Navigate to={user ? "/home" : "/login"} />} />
       <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
+      <Route path="/signup" element={<Signup />} />
       <Route path="/home" element={user ? <Home /> : <Navigate to="/login" />} />
       <Route path="/home/camp-details/:id" element={user ? <CampDetailsPage /> : <Navigate to="/login" />} />
       <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
