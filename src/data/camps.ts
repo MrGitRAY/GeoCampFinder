@@ -26,7 +26,7 @@ export const camps: Camp[] = [
     lat: 35.8955,
     lng: 51.7066,
     description: "A beautiful camp nestled in the Alborz Mountains with views of Mount Damavand.",
-    imageUrl: "https://source.unsplash.com/800x400/?camp,mountain",
+    imageUrl: "/images/Alborz Mountain Camp.jpeg",
     features: ["Water", "Restroom", "Fire Pit", "Shade"]
   },
   {
@@ -35,7 +35,7 @@ export const camps: Camp[] = [
     lat: 37.0808,
     lng: 49.5832,
     description: "A cozy retreat deep in the misty forests of northern Iran.",
-    imageUrl: "https://source.unsplash.com/800x400/?forest,camp",
+    imageUrl: "/images/Gilan Forest Camp.jpg",
     features: ["Water", "Trash Bin", "Shower", "Electricity"]
   },
   {
@@ -44,7 +44,7 @@ export const camps: Camp[] = [
     lat: 34.5792,
     lng: 51.4611,
     description: "Endless desert silence under a sky full of stars. Perfect for peace-seekers.",
-    imageUrl: "https://source.unsplash.com/800x400/?desert,camping",
+    imageUrl: "/images/Maranjab Desert Camp.webp",
     features: ["Shade", "Water", "Restroom"]
   },
   {
@@ -53,7 +53,7 @@ export const camps: Camp[] = [
     lat: 25.2919,
     lng: 60.6430,
     description: "Golden sands and ocean breeze along the Gulf of Oman coastline.",
-    imageUrl: "https://source.unsplash.com/800x400/?beach,camping",
+    imageUrl: "/images/Chabahar Beach Camp.jpg",
     features: ["Electricity", "Shade", "Restroom", "Shower"]
   },
   {
@@ -62,7 +62,7 @@ export const camps: Camp[] = [
     lat: 32.3700,
     lng: 50.8640,
     description: "Colorful spring fields full of unique tulips, ideal for nature lovers.",
-    imageUrl: "https://source.unsplash.com/800x400/?flowers,nature,camp",
+    imageUrl: "/images/Upside-down Tulip Field Camp.webp",
     features: ["Water", "Shower", "Parking"]
   },
   {
@@ -71,7 +71,7 @@ export const camps: Camp[] = [
     lat: 35.3097,
     lng: 46.9989,
     description: "Green valleys and cool air in the western mountains of Iran.",
-    imageUrl: "https://source.unsplash.com/800x400/?mountain,hiking,camp",
+    imageUrl: "/images/Kurdistan Mountain Camp.jpg",
     features: ["Electricity", "Restroom", "Fire Pit"]
   },
   {
@@ -80,7 +80,7 @@ export const camps: Camp[] = [
     lat: 36.8500,
     lng: 54.4333,
     description: "A breezy beachside site along the Caspian Sea, ideal for summer camping.",
-    imageUrl: "https://source.unsplash.com/800x400/?caspian,beach,camping",
+    imageUrl: "/images/Caspian Sea Camp.jpg",
     features: ["Water", "Electricity", "Restroom", "Shade"]
   },
   {
@@ -89,8 +89,8 @@ export const camps: Camp[] = [
     lat: 33.3558,
     lng: 49.2185,
     description: "Camp high in the Zagros Mountains with stunning sunset views.",
-    imageUrl: "https://source.unsplash.com/800x400/?mountain,camping,sunset",
-    features: ["Fire Pit", "Water", "Parking", "Toilets"]
+    imageUrl: "/images/Zagros Highland Camp.jpg",
+    features: ["Fire Pit", "Water", "Parking"]
   },
   {
     id: 9,
@@ -98,7 +98,7 @@ export const camps: Camp[] = [
     lat: 37.5333,
     lng: 45.0000,
     description: "Quiet and unique camping by the colorful shores of Lake Urmia.",
-    imageUrl: "https://source.unsplash.com/800x400/?lake,camping,iran",
+    imageUrl: "/images/Lake Urmia Camp.jpg",
     features: ["Water", "Shade", "Trash Bin"]
   },
   {
@@ -107,7 +107,7 @@ export const camps: Camp[] = [
     lat: 34.7200,
     lng: 52.9500,
     description: "Wild desert camping in Iran’s protected Kavir National Park region.",
-    imageUrl: "https://source.unsplash.com/800x400/?desert,nature,camping",
+    imageUrl: "/images/Kavir National Park Camp.jpg",
     features: ["Shade", "Restroom", "Fire Pit"]
   },
   {
@@ -116,7 +116,7 @@ export const camps: Camp[] = [
     lat: 33.4894,
     lng: 48.3532,
     description: "Camp by the river with beautiful rocky formations and waterfalls.",
-    imageUrl: "https://source.unsplash.com/800x400/?river,camping,rocks",
+    imageUrl: "/images/Lorestan River Camp.jpg",
     features: ["Water", "Electricity", "Shower", "Restroom"]
   },
   {
@@ -125,7 +125,7 @@ export const camps: Camp[] = [
     lat: 30.6492,
     lng: 61.8471,
     description: "Peaceful lakeside camping in the Sistan Basin with birdwatching opportunities.",
-    imageUrl: "https://source.unsplash.com/800x400/?lake,birds,camping",
+    imageUrl: "/images/Sistan Lakefront Camp.jpg",
     features: ["Water", "Restroom", "Shower", "Trash Bin"]
   }
 ];

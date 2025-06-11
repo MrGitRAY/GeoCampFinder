@@ -7,7 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const ProfilePage = () => {
-    const { user, password } = useAuth();
+    const { user } = useAuth();
+    const storedUsersJson = localStorage.getItem("Users");
+    const storedUsers = storedUsersJson ? JSON.parse(storedUsersJson) : [];
+    const userPass = storedUsers.find((u: any) => u.username === user).password
+
     const { favorites, toggleFavorite } = useFavorites();
     const navigate = useNavigate();
 
@@ -51,7 +55,7 @@ const ProfilePage = () => {
                         <strong>Username:</strong> {user}
                     </p>
                     <p className="text-sm mb-2">
-                        <strong>Password:</strong> {password ? "●●●●●●" : "Not Set"}
+                        <strong>Password:</strong> {userPass}
                     </p>
                 </div>
 
